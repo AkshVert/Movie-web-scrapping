@@ -1,4 +1,4 @@
-#Importing libraries and modules
+#Importing libraries
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -32,7 +32,10 @@ for movie_row in top_movies_table.find_all('tr')[:10]:
     movie_ratings.append(movie_rating)
     movie_years.append(movie_year)
 
-with open('top_10_indian_movies.txt', 'w') as f:
+with open('top_10_indian_movies.txt', 'a') as f:
+    f.write(f'\n-------------------------------------------------------------------------------------------')
+    f.write(f'\n')
     f.write(f'IMDb Top 10 Indian Movies ({date_time} IST):\n\n')
     for i in range(10):
         f.write(f'{i+1}. {movie_titles[i]} ({movie_years[i]}) - {movie_ratings[i]}\n')
+    
